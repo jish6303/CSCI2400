@@ -1,0 +1,38 @@
+   0x08048d09 <+0>:	push   %ebp
+   0x08048d0a <+1>:	mov    %esp,%ebp
+   0x08048d0c <+3>:	sub    $0x18,%esp
+   0x08048d0f <+6>:	mov    %ebx,-0x8(%ebp)
+   0x08048d12 <+9>:	mov    %esi,-0x4(%ebp)
+   0x08048d15 <+12>:	mov    0x8(%ebp),%eax
+   0x08048d18 <+15>:	mov    0xc(%ebp),%edx
+   0x08048d1b <+18>:	mov    0x10(%ebp),%esi
+   0x08048d1e <+21>:	mov    %esi,%ecx
+   0x08048d20 <+23>:	sub    %edx,%ecx
+   0x08048d22 <+25>:	mov    %ecx,%ebx
+   0x08048d24 <+27>:	shr    $0x1f,%ebx
+   0x08048d27 <+30>:	add    %ebx,%ecx
+   0x08048d29 <+32>:	sar    %ecx
+   0x08048d2b <+34>:	lea    (%ecx,%edx,1),%ebx
+   0x08048d2e <+37>:	cmp    %eax,%ebx
+   0x08048d30 <+39>:	jle    0x8048d49 <func4+64>
+   0x08048d32 <+41>:	lea    -0x1(%ebx),%ecx
+   0x08048d35 <+44>:	mov    %ecx,0x8(%esp)
+   0x08048d39 <+48>:	mov    %edx,0x4(%esp)
+   0x08048d3d <+52>:	mov    %eax,(%esp)
+   0x08048d40 <+55>:	call   0x8048d09 <func4>
+   0x08048d45 <+60>:	add    %eax,%ebx
+   0x08048d47 <+62>:	jmp    0x8048d62 <func4+89>
+   0x08048d49 <+64>:	cmp    %eax,%ebx
+   0x08048d4b <+66>:	jge    0x8048d62 <func4+89>
+   0x08048d4d <+68>:	mov    %esi,0x8(%esp)
+   0x08048d51 <+72>:	lea    0x1(%ebx),%edx
+   0x08048d54 <+75>:	mov    %edx,0x4(%esp)
+   0x08048d58 <+79>:	mov    %eax,(%esp)
+   0x08048d5b <+82>:	call   0x8048d09 <func4>
+   0x08048d60 <+87>:	add    %eax,%ebx
+   0x08048d62 <+89>:	mov    %ebx,%eax
+   0x08048d64 <+91>:	mov    -0x8(%ebp),%ebx
+   0x08048d67 <+94>:	mov    -0x4(%ebp),%esi
+   0x08048d6a <+97>:	mov    %ebp,%esp
+   0x08048d6c <+99>:	pop    %ebp
+   0x08048d6d <+100>:	ret    

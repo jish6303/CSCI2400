@@ -1,0 +1,76 @@
+   0x08048bc2 <+0>:		push   %ebp
+   0x08048bc3 <+1>:		mov    %esp,%ebp
+   0x08048bc5 <+3>:		sub    $0x38,%esp
+   0x08048bc8 <+6>:		lea    -0x10(%ebp),%eax
+   0x08048bcb <+9>:		mov    %eax,0x10(%esp)
+   0x08048bcf <+13>:	lea    -0x9(%ebp),%eax
+   0x08048bd2 <+16>:	mov    %eax,0xc(%esp)
+   0x08048bd6 <+20>:	lea    -0x14(%ebp),%eax
+   0x08048bd9 <+23>:	mov    %eax,0x8(%esp)
+   0x08048bdd <+27>:	movl   $0x804a3e1,0x4(%esp)
+   0x08048be5 <+35>:	mov    0x8(%ebp),%eax
+   0x08048be8 <+38>:	mov    %eax,(%esp)
+   0x08048beb <+41>:	call   0x8048870 <__isoc99_sscanf@plt>
+   0x08048bf0 <+46>:	cmp    $0x2,%eax
+   0x08048bf3 <+49>:	jg     0x8048bfa <phase_3+56>
+   0x08048bf5 <+51>:	call   0x80492b3 <explode_bomb>
+   0x08048bfa <+56>:	cmpl   $0x7,-0x14(%ebp)
+   0x08048bfe <+60>:	ja     0x8048cf3 <phase_3+305>
+   0x08048c04 <+66>:	mov    -0x14(%ebp),%eax
+   0x08048c07 <+69>:	jmp    *0x804a400(,%eax,4)
+   0x08048c0e <+76>:	mov    $0x66,%eax
+   0x08048c13 <+81>:	cmpl   $0x2e8,-0x10(%ebp)
+   0x08048c1a <+88>:	je     0x8048cfd <phase_3+315>
+   0x08048c20 <+94>:	call   0x80492b3 <explode_bomb>
+   0x08048c25 <+99>:	mov    $0x66,%eax
+   0x08048c2a <+104>:	jmp    0x8048cfd <phase_3+315>
+   0x08048c2f <+109>:	mov    $0x64,%eax
+   0x08048c34 <+114>:	cmpl   $0x39d,-0x10(%ebp)
+   0x08048c3b <+121>:	je     0x8048cfd <phase_3+315>
+   0x08048c41 <+127>:	call   0x80492b3 <explode_bomb>
+   0x08048c46 <+132>:	mov    $0x64,%eax
+   0x08048c4b <+137>:	jmp    0x8048cfd <phase_3+315>
+   0x08048c50 <+142>:	mov    $0x63,%eax
+   0x08048c55 <+147>:	cmpl   $0x13c,-0x10(%ebp)
+   0x08048c5c <+154>:	je     0x8048cfd <phase_3+315>
+   0x08048c62 <+160>:	call   0x80492b3 <explode_bomb>
+   0x08048c67 <+165>:	mov    $0x63,%eax
+   0x08048c6c <+170>:	jmp    0x8048cfd <phase_3+315>
+   0x08048c71 <+175>:	mov    $0x65,%eax
+   0x08048c76 <+180>:	cmpl   $0x2bd,-0x10(%ebp)
+   0x08048c7d <+187>:	je     0x8048cfd <phase_3+315>
+   0x08048c7f <+189>:	call   0x80492b3 <explode_bomb>
+   0x08048c84 <+194>:	mov    $0x65,%eax
+   0x08048c89 <+199>:	jmp    0x8048cfd <phase_3+315>
+   0x08048c8b <+201>:	mov    $0x74,%eax
+   0x08048c90 <+206>:	cmpl   $0x1b3,-0x10(%ebp)
+   0x08048c97 <+213>:	je     0x8048cfd <phase_3+315>
+   0x08048c99 <+215>:	call   0x80492b3 <explode_bomb>
+   0x08048c9e <+220>:	mov    $0x74,%eax
+   0x08048ca3 <+225>:	jmp    0x8048cfd <phase_3+315>
+   0x08048ca5 <+227>:	mov    $0x6b,%eax
+   0x08048caa <+232>:	cmpl   $0x9f,-0x10(%ebp)
+   0x08048cb1 <+239>:	je     0x8048cfd <phase_3+315>
+   0x08048cb3 <+241>:	call   0x80492b3 <explode_bomb>
+   0x08048cb8 <+246>:	mov    $0x6b,%eax
+   0x08048cbd <+251>:	jmp    0x8048cfd <phase_3+315>
+   0x08048cbf <+253>:	mov    $0x63,%eax
+   0x08048cc4 <+258>:	cmpl   $0x398,-0x10(%ebp)
+   0x08048ccb <+265>:	je     0x8048cfd <phase_3+315>
+   0x08048ccd <+267>:	call   0x80492b3 <explode_bomb>
+   0x08048cd2 <+272>:	mov    $0x63,%eax
+   0x08048cd7 <+277>:	jmp    0x8048cfd <phase_3+315>
+   0x08048cd9 <+279>:	mov    $0x62,%eax
+   0x08048cde <+284>:	cmpl   $0x205,-0x10(%ebp)
+   0x08048ce5 <+291>:	je     0x8048cfd <phase_3+315>
+   0x08048ce7 <+293>:	call   0x80492b3 <explode_bomb>
+   0x08048cec <+298>:	mov    $0x62,%eax
+   0x08048cf1 <+303>:	jmp    0x8048cfd <phase_3+315>
+   0x08048cf3 <+305>:	call   0x80492b3 <explode_bomb>
+   0x08048cf8 <+310>:	mov    $0x65,%eax
+   0x08048cfd <+315>:	cmp    -0x9(%ebp),%al
+   0x08048d00 <+318>:	je     0x8048d07 <phase_3+325>
+   0x08048d02 <+320>:	call   0x80492b3 <explode_bomb>
+   0x08048d07 <+325>:	leave  
+   0x08048d08 <+326>:	ret    
+

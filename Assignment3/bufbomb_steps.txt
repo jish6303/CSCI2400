@@ -1,0 +1,51 @@
+BufBomb Buffer Lab
+
+Level 0: Candle
+We want to find smoke, so lets find its address. 
+Run with breakpoint at getbuf, do i r and examine the difference between esp and ebp
+XXXXXX18 to XXXXXX50 is a difference of 40. Then there is the 4 bytes between ebp and the return address. This lets us know we need to write 44 words of "filler" and then type our code to put it in the return address to override the current RA.
+
+now type objdump -d getbuf : and search through the function for the address of smoke. 08048b68, now put it in little endian form and type it after. 
+
+
+LEVEL 1: Sparkler
+Will use same ideas as above w/ 44 then typing. Type in fizz's address in little endian instead. 08048b92. then we disas fizz and see that it is comparing  <+6>: mov 0x8(%ebp),%eax it to 8 above so we know padding. we write 4 pads in and then the our cookie in little endian. It is only 4 away from the 44, because it is 8 above ebp which starts at %ebp. 
+
+
+
+LEVEL 2: Firecracker
+Basically we will have to make the new address point to function code that we will write. We need to find the address of global variable and change it to cookie, and then push bang on the stack. Disassemble the bang function to find global variable is located at 0x804d104. there were 2 that are being compared and x/s them shows the "4" returns <global value>. make cookie's equal to value stored at global values position. Now we need to push bang on to the stack and run it, and then return to get out of the getbuf function afterwards. 
+
+ 
+movl  $0x2fddefe6, 0x804d104  //store cookie in where global value is
+pushl $0x08048bed  //push address to where getbuf() would normally return
+ret
+Compiling this gets our code that will need to be called. 
+
+Break at *getbuf+17 since its the end of getbuf function and info register. 
+ebp   0x55683b58 shows us the bp is at this location. and since we wrote the numbers afterwards we now need to add 8 to this value to call our written code to perform said functions. 
+
+
+
+LEVEL 3: Dynamite 
+Same exact concept and first 48 phrases as the previous. but now we will write a new .d file to do different commands. now we just need to make sure it returns to test to continue the function. 
+
+At getbuf+17 the mov instruction places the value 1 in the register %eax. When getbuf() returns totest() on test+20, whatever value was held at %eax is now also stored at %ebx. This is important to notice since in order to succeed on this level of the buffer lab, we will have to store our cookie id in the%eax register while in the getbuf() function, so it returns with our id and passes it to %ebx, instead of the original value of 1.
+
+movl $0x2fddefe6, %eax //store cookie in eax
+movl $0x55683b80, %ebp set bp back to where it was from test file
+pushl $0x08048d94 push address to where getbuf() would normally return
+ret
+
+*Run file in gdb with breakpoint at test+3 or whatever to find and do i r to find out what ebp should be when returning to test file. We then movl that number back into ebp so that it doesn't think we're in getbuf anymore. Then we push the address of where getbuf() normally returns. Break inside the getbuf function and type where to figure out where it returns to in test.
+
+(gdb) where
+#0  0x08049136 in getbuf ()
+#1  0x08048d94 in test ()   <--------------
+#2  0x08048e57 in launch ()
+#3  0x08048f28 in launcher ()
+#4  0x0804910a in main ()
+this is the address that we use to push on the stack as shown above in our assembly code. Then putting this information after the 48 digits in my .txt file runs the file, and returns to the right place in test() while returning my cookie instead of 1. 
+
+
+***Instead of movl $0x55683bc0, %ebp  we could delete that and write in the ebp code where it belongs in the txt file. ebp is written over in the code between 40-44. If we write the address in little endian between word 41-44 we essentially overwrite ebp with its correct value and don't overwrite it at all. 

@@ -1,0 +1,29 @@
+##
+##
+
+CXX	=g++
+CXXFLAGS= -m64 -g -O5 -static
+#-m64 -g -O5 -static
+#-m64 -O5 -static -funroll-loops -Ofast -msse2
+#-m64 -g -O5 -finline -static
+
+goals: judge
+	echo "Done"
+
+filter: FilterMain.cpp Filter.cpp cs1300bmp.cc
+	$(CXX) $(CXXFLAGS) -o filter FilterMain.cpp Filter.cpp cs1300bmp.cc
+##
+## Parameters for the test run
+##
+FILTERS = gauss.filter vline.filter hline.filter emboss.filter
+IMAGES = boats.bmp blocks-small.bmp
+TRIALS = 1 2 3 4
+
+judge: filter
+	#-./Judge -p ./filter -i boats.bmp
+	-./Judge -p ./filter -i blocks-small.bmp
+
+clean:
+	-rm *.o
+	-rm filter
+	-rm filtered-*.bmp
